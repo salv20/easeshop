@@ -25,6 +25,10 @@ const Sliders = ({ details }) => {
                   slidesPerView: 3,
                   spaceBetween: 20,
                 },
+                450: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
               }}
               autoplay={{
                 delay: 6000,
@@ -41,7 +45,7 @@ const Sliders = ({ details }) => {
                   <img
                     src={prod.image}
                     alt=""
-                    className="Myswiper h-[13rem] pb-8 w-full"
+                    className="Myswiper h-[16rem] sm:h-[13rem] pb-8 w-full"
                   />
                 </SwiperSlide>
               ))}

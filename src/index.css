@@ -54,6 +54,26 @@ body {
   color: black;
 }
 
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: white;
+  border-radius: 100%;
+  padding: 0 20px;
+  background-repeat: no-repeat;
+}
+
+.swiper-pagination-bullet {
+  padding: 5px;
+  background-color: white !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: white !important;
+}
 @layer base {
   .btn-sm {
     @apply text-[#cdcdd1] bg-[#252526] px-4 py-1 rounded-2xl items-center font-semibold capitalize;

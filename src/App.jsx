@@ -1,7 +1,6 @@
-
-import "./App.css";
-
 function App() {
+  const he = "mee";
+  console.log(he);
 
   return (
     <>

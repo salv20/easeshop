@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-image: linear-gradient(
+    170deg,
+    #0f1010 20%,
+    #181819 50%,
+    #161717 40%,
+    #111112 80%,
+    #101112 90%
+  );
+}
+
+.btn-sm {
+  border: 0 solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-sm:hover {
+  border: 1px solid;
+  box-shadow:
+    inset 0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+}
+
+@layer base {
+  .btn-sm {
+    @apply text-[#cdcdd1] bg-[#252526] px-4 py-1 rounded-2xl items-center font-semibold capitalize;
+  }
+}

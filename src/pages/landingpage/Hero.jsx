@@ -56,7 +56,7 @@ const Hero = () => {
 
         <p className="text-[#9d9b9b] text-sm">
           Find things thats suits you, that&apos;s how to look and feel
-          extraordinary...
+          extraordinary.
           <br className="hidden md:block" />
           Easestore offers the best of accessories.
         </p>

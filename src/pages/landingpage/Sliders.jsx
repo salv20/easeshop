@@ -45,7 +45,7 @@ const Sliders = ({ details }) => {
                   <img
                     src={prod.image}
                     alt=""
-                    className="Myswiper h-[16rem] sm:h-[13rem] pb-8 w-full"
+                    className="Myswiper h-[17rem] sm:h-[13rem] pb-8 w-full"
                   />
                 </SwiperSlide>
               ))}

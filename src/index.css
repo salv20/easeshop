@@ -33,6 +33,27 @@ body {
   text-shadow: 1px 1px 2px #427388;
 }
 
+.btn-new:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  top: -4px;
+  right: -6px;
+  transition: 0.5s;
+  font-size: 25px;
+}
+
+.btn-new:hover {
+  padding-right: 24px;
+  padding-left: 8px;
+}
+
+.btn-new:hover:after {
+  opacity: 1;
+  right: 5px;
+  color: black;
+}
+
 @layer base {
   .btn-sm {
     @apply text-[#cdcdd1] bg-[#252526] px-4 py-1 rounded-2xl items-center font-semibold capitalize;

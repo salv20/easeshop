@@ -1,11 +1,13 @@
-import { applyMiddleware, createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+
 import { composeWithDevTools } from "@redux-devtools/extension";
-import {
-  FETCH_DATA_ERROR,
-  FETCH_DATA_REQUEST,
-  FETCH_DATA_SUCCESS,
-} from "./ActionTypes";
 import { thunk } from "redux-thunk";
+
+import {
+  FETCH_DATA_REQUEST,
+  FETCH_DATA_RESULT,
+  FETCH_DATA_ERROR,
+} from "./ActionTypex";
 
 const initialState = {
   loading: true,
@@ -13,13 +15,15 @@ const initialState = {
   error: "",
 };
 
-const productReducer = (state = initialState, action) => {
+const ProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DATA_REQUEST:
       return {
+        ...state,
         loading: true,
       };
-    case FETCH_DATA_SUCCESS:
+
+    case FETCH_DATA_RESULT:
       return {
         loading: false,
         product: action.payload,
@@ -37,8 +41,8 @@ const productReducer = (state = initialState, action) => {
 };
 
 const store = createStore(
-  productReducer,
-  composeWithDevTools(applyMiddleware(thunk)),
+  ProductReducer,
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 export default store;

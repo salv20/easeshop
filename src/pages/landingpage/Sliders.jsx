@@ -4,17 +4,26 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Autoplay, Navigation, EffectFade } from "swiper/modules";
 
-const Sliders = ({ details }) => {
+import FetchFunc from "../../redux/productAction";
+import { connect } from "react-redux";
+import { useEffect } from "react";
+
+const Sliders = ({ products, fetchProduct }) => {
+  useEffect(() => {
+    fetchProduct();
+  }, []);
+
   return (
     <div>
       {
         <div className="">
-          {details.loading && (
+          {products?.loading && (
             <p className="text-green-500 capitalize text-lg leading-loose">
               loading . . .
             </p>
           )}
-          {!details.loading && details.products.length ? (
+
+          {!products?.loading && products?.product.length ? (
             <Swiper
               breakpoints={{
                 900: {
@@ -40,7 +49,7 @@ const Sliders = ({ details }) => {
               navigation={true}
               modules={[EffectFade, Autoplay, Pagination, Navigation]}
             >
-              {details.products.splice(0, 10).map((prod, index) => (
+              {products?.product.splice(0, 10).map((prod, index) => (
                 <SwiperSlide key={index}>
                   <img
                     src={prod.image}
@@ -51,10 +60,10 @@ const Sliders = ({ details }) => {
               ))}
             </Swiper>
           ) : (
-            !details.loading &&
-            details.error && (
+            !products?.loading &&
+            products?.error && (
               <p className="text-red-500 font-semibold leading-loose text-lg">
-                {`${details.error} please connect to the internet !!`}
+                {`${products?.error} please connect to the internet !!`}
               </p>
             )
           )}
@@ -64,4 +73,16 @@ const Sliders = ({ details }) => {
   );
 };
 
-export default Sliders;
+const mapStateToProps = (state) => {
+  return {
+    products: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchProduct: () => dispatch(FetchFunc()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sliders);

@@ -1,42 +1,6 @@
-import { useEffect, useState } from "react";
 import Sliders from "./Sliders";
 
 const Hero = () => {
-  const [fetchTime, setFetchTime] = useState(false);
-  const [details, setDetails] = useState({
-    loading: true,
-    products: [],
-    error: "",
-  });
-
-  useEffect(() => {
-    const fetchAPi = async () => {
-      try {
-        const res = await fetch("https://fakestoreapi.com/products");
-        if (res.status === 200) {
-          const data = await res.json();
-          setDetails({
-            ...details,
-            loading: false,
-            products: data,
-            error: "",
-          });
-        } else {
-          throw "incorrect url";
-        }
-      } catch (error) {
-        setDetails({
-          ...details,
-          loading: false,
-          products: [],
-          error: error.message,
-        });
-      }
-    };
-
-    fetchAPi();
-  }, [fetchTime]);
-
   return (
     <section className="text-center gap-12 flex flex-col py-4">
       <div className="flex flex-col gap-4">
@@ -69,7 +33,7 @@ const Hero = () => {
         </button>
       </div>
 
-      <Sliders details={details} />
+      <Sliders />
     </section>
   );
 };

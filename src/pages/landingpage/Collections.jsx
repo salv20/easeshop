@@ -6,6 +6,9 @@ const Collections = ({ products, fetchProduct }) => {
   useEffect(() => {
     fetchProduct();
     console.log(products);
+    if (products === undefined) {
+      console.log("hello");
+    }
   }, []);
 
   return (

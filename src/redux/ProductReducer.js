@@ -25,12 +25,14 @@ const ProductReducer = (state = initialState, action) => {
 
     case FETCH_DATA_RESULT:
       return {
+        ...state,
         loading: false,
         product: action.payload,
         error: "",
       };
     case FETCH_DATA_ERROR:
       return {
+        ...state,
         loading: false,
         product: [],
         error: action.payload,

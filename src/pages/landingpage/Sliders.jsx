@@ -16,8 +16,8 @@ const Sliders = ({ products, fetchProduct }) => {
   return (
     <div>
       {
-        <div className="">
-          {products?.loading && (
+        <div>
+          {(!products || products?.loading) && (
             <p className="text-green-500 capitalize text-lg leading-loose">
               loading . . .
             </p>

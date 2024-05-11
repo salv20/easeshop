@@ -78,4 +78,7 @@ body {
   .btn-sm {
     @apply text-[#cdcdd1] bg-[#252526] px-4 py-1 rounded-2xl items-center font-semibold capitalize;
   }
+  .sort-btn {
+    @apply capitalize font-semibold rounded-none px-1 lg:py-2;
+  }
 }

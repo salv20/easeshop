@@ -7,6 +7,7 @@ import { Pagination, Autoplay, Navigation, EffectFade } from "swiper/modules";
 import FetchFunc from "../../redux/productAction";
 import { connect } from "react-redux";
 import { useEffect } from "react";
+import { BeatLoader } from "react-spinners";
 
 const Sliders = ({ products, fetchProduct }) => {
   useEffect(() => {
@@ -19,10 +20,15 @@ const Sliders = ({ products, fetchProduct }) => {
         <div>
           {(!products || products?.loading) && (
             <p className="text-green-500 capitalize text-lg leading-loose">
-              loading . . .
+              <BeatLoader
+                color={"green"}
+                loading={true}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
             </p>
           )}
-
           {!products?.loading && products?.product.length ? (
             <Swiper
               breakpoints={{
@@ -54,7 +60,7 @@ const Sliders = ({ products, fetchProduct }) => {
                   <img
                     src={prod.image}
                     alt=""
-                    className="Myswiper h-[17rem] sm:h-[13rem] pb-8 w-full"
+                    className="Myswiper rounded-md h-[17rem] sm:h-[13rem] mb-10 w-full"
                   />
                 </SwiperSlide>
               ))}

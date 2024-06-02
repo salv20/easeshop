@@ -85,4 +85,7 @@ body {
   .sort-btn {
     @apply capitalize font-semibold rounded-none px-1 lg:py-2;
   }
+  .btn-shop {
+    @apply border-2 border-orange-400 px-4 py-1 rounded-2xl items-center text-[#16494a] capitalize font-bold text-[15px] hover:text-orange-400 hover:border-amber-950 transition-all duration-700;
+  }
 }

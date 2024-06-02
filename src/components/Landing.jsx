@@ -6,9 +6,11 @@ import Collections from "../pages/landingpage/Collections";
 const Landing = () => {
   return (
     <main>
-      <div className="container mx-auto">
-        <Nav />
-        <Hero />
+      <div className="container mx-auto flex flex-col gap-10">
+        <div>
+          <Nav />
+          <Hero />
+        </div>
         <Collections />
         <Footer />
       </div>

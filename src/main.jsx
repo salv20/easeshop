@@ -7,11 +7,16 @@ import store from "./redux/ProductReducer.js";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Landing from "./components/Landing.jsx";
+import ProductDetail from "./pages/landingpage/productDetail.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
+  },
+  {
+    path: "/:id",
+    element: <ProductDetail />,
   },
 ]);
 

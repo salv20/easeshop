@@ -2,8 +2,16 @@ import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FaCartShopping } from "react-icons/fa6";
+
+import { useDispatch, useSelector } from "react-redux";
+import { AddCart } from "../../redux/productAction";
 
 const Collections = () => {
+  const product = useSelector((state) => state);
+
+  const dispatch = useDispatch();
+
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [category, setCategory] = useState("products");
@@ -26,8 +34,8 @@ const Collections = () => {
     );
   }, [category]);
 
-  const addToCart = () => {
-    console.log("hello");
+  const addToCart = (product) => {
+    dispatch(AddCart(product));
   };
 
   return (
@@ -99,9 +107,6 @@ const Collections = () => {
             <div className="flex flex-col gap-y-4 mx-auto sm:flex-row gap-2 justify-around mt-2">
               <button className=" btn-shop">
                 <Link to={`/${DB.id}`}>quick view</Link>
-              </button>
-              <button className=" btn-shop" onClick={() => addToCart()}>
-                add to cart
               </button>
             </div>
           </div>

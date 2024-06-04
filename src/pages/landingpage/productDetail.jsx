@@ -3,13 +3,15 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaCaretLeft, FaStar } from "react-icons/fa";
 import { BeatLoader } from "react-spinners";
+import { useDispatch } from "react-redux";
+import { AddCart } from "../../redux/productAction";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState();
   const [error, setError] = useState("");
-
+  const dispatch = useDispatch();
   useEffect(() => {
     setLoading(true);
     axios
@@ -23,7 +25,9 @@ const ProductDetail = () => {
         setLoading(false);
       });
   }, []);
-
+  const cartAddiction = (product) => {
+    dispatch(AddCart(product));
+  };
   return (
     <section className="text-white">
       <div className="container py-10 mx-auto">
@@ -38,7 +42,7 @@ const ProductDetail = () => {
             />
           </p>
         ) : !loading && product ? (
-          <div className="flex flex-col sm:flex-row justify-between mt-10 gap-10 items-center">
+          <div className="flex flex-col md:flex-row justify-between mt-10 gap-10 items-center">
             <div className="">
               <img
                 className="h-[400px] w-[1000px] md:w-[1500px] rounded-xl shadow-md shadow-white border-2"
@@ -73,10 +77,12 @@ const ProductDetail = () => {
                     </Link>
                   </button>
                   <button className=" btn-shop">
-                    <Link to="">add to cart</Link>
+                    <Link to="" onClick={() => cartAddiction(product)}>
+                      add to cart
+                    </Link>
                   </button>
                   <button className=" btn-shop">
-                    <Link to="">view cart</Link>
+                    <Link to="/cart">view cart</Link>
                   </button>
                 </div>
               </div>

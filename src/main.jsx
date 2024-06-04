@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-import { Provider } from "react-redux";
-import store from "./redux/ProductReducer.js";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Landing from "./components/Landing.jsx";
 import ProductDetail from "./pages/landingpage/productDetail.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/ProductReducer.js";
+import Cart from "./components/Cart.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/:id",
     element: <ProductDetail />,
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
   },
 ]);
 

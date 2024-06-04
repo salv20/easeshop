@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
-
+import { useSelector } from "react-redux";
 const Nav = () => {
+  const product = useSelector((state) => state);
+
   return (
     <header className="text-[#ddddde] py-4 items-center gap-6 flex justify-between">
       <h1 className="uppercase font-bold">easestore</h1>
@@ -26,10 +28,10 @@ const Nav = () => {
 
       <div className="flex gap-4">
         <button className="text-[#cdcdd1] relative bg-[#252526] px-2 py-1.5 items-center rounded-full">
-          <Link>
-            <FaCartShopping className="relative z-40 text-xl" />
-            <span className="absolute top-0 font-bold text-sm px-1.5 text-black bg-[#858585] rounded-full z-10">
-              1
+          <Link to="/cart">
+            <FaCartShopping className="relative text-xl" />
+            <span className="absolute -top-1 left-6 font-bold text-xl text-green-500  z-10">
+              {product ? product.length : 0}
             </span>
           </Link>
         </button>

@@ -1,39 +1,17 @@
-import axios from "axios";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "./ActionTypex";
 
-import {
-  FETCH_DATA_ERROR,
-  FETCH_DATA_RESULT,
-  FETCH_DATA_REQUEST,
-} from "./ActionTypex";
-
-const loading = () => {
+// ADD TO CART
+export const AddCart = (product) => {
   return {
-    type: FETCH_DATA_REQUEST,
+    type: ADD_TO_CART,
+    payload: product,
   };
 };
 
-const fetchData = (products) => {
+// Remove from CART
+export const RemoveCart = (product) => {
   return {
-    type: FETCH_DATA_RESULT,
-    payload: products,
+    type: REMOVE_FROM_CART,
+    payload: product,
   };
 };
-
-const fetchError = (err) => {
-  return {
-    type: FETCH_DATA_ERROR,
-    payload: err,
-  };
-};
-
-const FetchFunc = () => {
-  return (dispatch) => {
-    dispatch(loading);
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => dispatch(fetchData(res.data)))
-      .catch((err) => dispatch(fetchError(err.message)));
-  };
-};
-
-export default FetchFunc;

@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaCaretLeft, FaStar } from "react-icons/fa";
 import { BeatLoader } from "react-spinners";
 import { useDispatch } from "react-redux";
 import { AddCart } from "../../redux/productAction";
 
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState();
@@ -27,6 +31,17 @@ const ProductDetail = () => {
   }, []);
   const cartAddiction = (product) => {
     dispatch(AddCart(product));
+    toast.success("Cart added successfully!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   };
   return (
     <section className="text-white">
@@ -76,13 +91,20 @@ const ProductDetail = () => {
                       <FaCaretLeft />
                     </Link>
                   </button>
-                  <button className=" btn-shop">
-                    <Link to="" onClick={() => cartAddiction(product)}>
-                      add to cart
-                    </Link>
+                  <button
+                    onClick={() => cartAddiction(product)}
+                    className=" btn-shop"
+                  >
+                    add to cart
                   </button>
-                  <button className=" btn-shop">
-                    <Link to="/cart">view cart</Link>
+
+                  <ToastContainer />
+
+                  <button
+                    className=" btn-shop"
+                    onClick={() => navigate("/cart")}
+                  >
+                    view cart
                   </button>
                 </div>
               </div>

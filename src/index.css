@@ -78,6 +78,20 @@ body {
 .active {
   background-color: rgba(47, 252, 255, 0.245);
 }
+
+.cartBtn {
+  box-shadow: inset 0 0 0 0 #16494a;
+  color: #54b3d6;
+  margin: 0 -0.25rem;
+  transition:
+    color 0.7s ease-in-out,
+    box-shadow 0.7s ease-in-out;
+}
+.cartBtn:hover {
+  box-shadow: inset 140px 0 0 0 #16494a;
+  color: white;
+}
+
 @layer base {
   .btn-sm {
     @apply text-[#cdcdd1] bg-[#252526] px-4 py-1 rounded-2xl items-center font-semibold capitalize;
@@ -86,6 +100,6 @@ body {
     @apply capitalize font-semibold rounded-none px-1 lg:py-2;
   }
   .btn-shop {
-    @apply border-2 border-orange-400 px-4 py-1 rounded-2xl items-center text-[#16494a] capitalize font-bold text-[15px] hover:text-orange-400 hover:border-amber-950 transition-all duration-700;
+    @apply border-2 border-orange-400 px-4 py-1.5 rounded-2xl text-[#16494a] capitalize font-bold text-[15px] hover:text-orange-400 hover:border-amber-950 transition-all duration-700;
   }
 }

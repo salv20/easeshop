@@ -9,6 +9,9 @@ import { AddCart } from "../../redux/productAction";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { fadeIn } from "../../../Variants";
+import { motion } from "framer-motion";
+
 const ProductDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -44,7 +47,12 @@ const ProductDetail = () => {
     });
   };
   return (
-    <section className="text-white">
+    <motion.section
+      variants={fadeIn("up")}
+      initial="initial"
+      whileInView={"animate"}
+      className="text-white"
+    >
       <div className="container py-10 mx-auto">
         {loading ? (
           <p className="text-green-500 mt-[35%] text-center capitalize text-lg leading-loose">
@@ -119,7 +127,7 @@ const ProductDetail = () => {
           )
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

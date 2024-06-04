@@ -2,6 +2,8 @@ import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../../Variants";
 
 const Collections = () => {
   const [data, setData] = useState([]);
@@ -27,7 +29,11 @@ const Collections = () => {
   }, [category]);
 
   return (
-    <section>
+    <motion.section
+      variants={fadeIn("up", 0.4)}
+      initial="initial"
+      whileInView={"animate"}
+    >
       {data.length && !error && (
         <div className="flex flex-col gap-14">
           <div className="text-white grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 justify-center sm:w-[90%] mx-auto">
@@ -108,7 +114,7 @@ const Collections = () => {
           </div>
         </div>
       )}
-    </section>
+    </motion.section>
   );
 };
 

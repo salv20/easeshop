@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { AddCart, RemoveCart } from "../redux/productAction";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../Variants";
 
 const Cart = () => {
   const state = useSelector((state) => state);
@@ -15,7 +17,11 @@ const Cart = () => {
   };
 
   return (
-    <section>
+    <motion.section
+      variants={fadeIn("up")}
+      initial="initial"
+      whileInView={"animate"}
+    >
       <div className="container mx-auto">
         <div className="text-white flex flex-col gap-10">
           {state && state.length ? (
@@ -75,7 +81,7 @@ const Cart = () => {
           )}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

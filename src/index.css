@@ -88,7 +88,7 @@ body {
     box-shadow 0.7s ease-in-out;
 }
 .cartBtn:hover {
-  box-shadow: inset 140px 0 0 0 #16494a;
+  box-shadow: inset 175px 0 0 0 #16494a;
   color: white;
 }
 

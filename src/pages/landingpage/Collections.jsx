@@ -4,17 +4,21 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../Variants";
+import { BeatLoader } from "react-spinners";
 
 const Collections = () => {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [category, setCategory] = useState("products");
 
   useEffect(() => {
+    setLoading(true);
+
     axios
       .get(`https://fakestoreapi.com/${category}`)
-      .then((res) => setData(res.data))
-      .catch((err) => setError(err.message));
+      .then((res) => (setLoading(false), setData(res.data)))
+      .catch((err) => (setLoading(false), setError(err.message)));
 
     // TOGGLE ACTIVE CLASS BETWEEEN BUTTONS
 
@@ -34,49 +38,57 @@ const Collections = () => {
       initial="initial"
       whileInView={"animate"}
     >
-      {data.length && !error && (
-        <div className="flex flex-col gap-14">
-          <div className="text-white grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 justify-center sm:w-[90%] mx-auto">
-            <button
-              className="sort-btn btn-sm active"
-              onClick={() => setCategory("products")}
-            >
-              all
-            </button>
+      <div className="text-white grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 justify-center sm:w-[90%] mx-auto">
+        <button
+          className="sort-btn btn-sm active"
+          onClick={() => setCategory("products")}
+        >
+          all
+        </button>
 
-            <button
-              className="sort-btn btn-sm"
-              onClick={() => {
-                setCategory("products/category/men's%20clothing");
-              }}
-            >
-              men&#39;s clothing
-            </button>
+        <button
+          className="sort-btn btn-sm"
+          onClick={() => {
+            setCategory("products/category/men's%20clothing");
+          }}
+        >
+          men&#39;s clothing
+        </button>
 
-            <button
-              className="sort-btn btn-sm"
-              onClick={() =>
-                setCategory("products/category/women's%20clothing")
-              }
-            >
-              women&#39;s clothing
-            </button>
+        <button
+          className="sort-btn btn-sm"
+          onClick={() => setCategory("products/category/women's%20clothing")}
+        >
+          women&#39;s clothing
+        </button>
 
-            <button
-              className="sort-btn btn-sm"
-              onClick={() => setCategory("products/category/jewelery")}
-            >
-              jewerly
-            </button>
+        <button
+          className="sort-btn btn-sm"
+          onClick={() => setCategory("products/category/jewelery")}
+        >
+          jewerly
+        </button>
 
-            <button
-              className="sort-btn btn-sm"
-              onClick={() => setCategory("products/category/electronics")}
-            >
-              electronics
-            </button>
-          </div>
+        <button
+          className="sort-btn btn-sm"
+          onClick={() => setCategory("products/category/electronics")}
+        >
+          electronics
+        </button>
+      </div>
 
+      {loading ? (
+        <p className="text-green-500 text-center mt-6 capitalize text-lg leading-loose">
+          <BeatLoader
+            color={"green"}
+            loading={true}
+            size={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </p>
+      ) : data.length && !error ? (
+        <div className="flex flex-col gap-14 mt-10">
           <div className="grid smm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 gap-x-4 md:gap-x-8">
             {data?.map((DB, index) => (
               <div
@@ -112,6 +124,10 @@ const Collections = () => {
               </div>
             ))}
           </div>
+        </div>
+      ) : (
+        <div className=" text-red-700 text-lg capitalize font-bold text-center mt-8">
+          <p>{error} please reload !!</p>
         </div>
       )}
     </motion.section>

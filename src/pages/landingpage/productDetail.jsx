@@ -18,6 +18,7 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState();
   const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   useEffect(() => {
     setLoading(true);
@@ -32,6 +33,7 @@ const ProductDetail = () => {
         setLoading(false);
       });
   }, []);
+
   const cartAddiction = (product) => {
     dispatch(AddCart(product));
     toast.success("Cart added successfully!", {
@@ -45,6 +47,8 @@ const ProductDetail = () => {
       theme: "dark",
       transition: Bounce,
     });
+
+    localStorage.setItem(JSON.stringify(product), "easeProduct");
   };
   return (
     <motion.section

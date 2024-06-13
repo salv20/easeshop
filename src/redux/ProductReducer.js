@@ -11,6 +11,8 @@ const cartReducer = (state = cart, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
       const check = state.find((ct) => ct.id === product.id);
+      localStorage.setItem(JSON.stringify(state), "easeArray");
+
       if (check) {
         return state.map((item) =>
           item.id === product.id ? { ...item, qty: item.qty + 1 } : item

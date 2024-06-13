@@ -22,15 +22,15 @@ const Cart = () => {
       initial="initial"
       whileInView={"animate"}
     >
-      <div className="container mx-auto">
-        <div className="text-white flex flex-col gap-10">
+      <div className="container mx-auto my-8">
+        <div className="text-white flex flex-col gap-2">
           {state && state.length ? (
             state.map((product, index) => (
               <div
                 key={index}
-                className="flex flex-col rounded-2xl p-2 md:flex-row border-2 mx-auto w-fit border-white justify-around mt-10 gap-10 items-center"
+                className="flex flex-col rounded-2xl p-2 md:flex-row border-2 mx-auto sm:w-[75%] border-white justify-around gap-8 lg:gap-10 items-center"
               >
-                <div className="">
+                <div>
                   <img
                     className="h-[20rem] w-[25rem] rounded-xl shadow-md shadow-white border-2"
                     src={product.image}
@@ -61,12 +61,20 @@ const Cart = () => {
                       <FaMinus className=" mx-auto" />
                     </button>
                   </div>
+                  <button className="mt-4">
+                    <Link
+                      to="/"
+                      className="cartBtn px-6 py-1.5 w-fit uppercase text-sm leading-loose font-bold border-2 tracking-widest border-[#16494a]"
+                    >
+                      keep shopping
+                    </Link>
+                  </button>
                 </div>
               </div>
             ))
           ) : (
             <div className="flex flex-col gap-4 items-center">
-              <h3 className="mt-[35%] text-green-700 text-lg capitalize font-bold  md:text-2xl">
+              <h3 className="mt-[30%] text-green-700 text-lg capitalize font-bold  md:text-2xl">
                 your cart is empty !!
               </h3>
               <button>

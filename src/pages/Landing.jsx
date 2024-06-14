@@ -1,7 +1,7 @@
-import Nav from "../pages/landingpage/Nav";
-import Hero from "../pages/landingpage/Hero";
-import Footer from "../pages/landingpage/Footer";
-import Collections from "../pages/landingpage/Collections";
+import Nav from "../landing/Nav";
+import Hero from "../landing/Hero";
+import Footer from "../landing/Footer";
+import Collections from "../landing/Collections";
 
 const Landing = () => {
   return (

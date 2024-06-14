@@ -6,12 +6,19 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../Variants";
 
 const Cart = () => {
-  const state = useSelector((state) => state);
+  let state = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  // if (localStorage.easeArray && localStorage.easeArray?.length) {
+  //   let locProduct = JSON.parse(localStorage.getItem("easeArray"));
+  //   state = locProduct;
+  // }
 
   const addToCartFunc = (product) => {
     dispatch(AddCart(product));
+    console.log(product);
   };
+
   const RemoveFromCartFunc = (product) => {
     dispatch(RemoveCart(product));
   };
@@ -23,7 +30,7 @@ const Cart = () => {
       whileInView={"animate"}
     >
       <div className="container mx-auto my-8">
-        <div className="text-white flex flex-col gap-2">
+        <div className="text-white flex flex-col gap-6">
           {state && state.length ? (
             state.map((product, index) => (
               <div
@@ -47,7 +54,7 @@ const Cart = () => {
                     $ {Number(product.price)} x {product.qty} = $
                     {Number(product.price) * product.qty}{" "}
                   </p>
-                  <div className="flex justify-around items-center mt-4">
+                  <div className="flex justify-around items-center mt-2">
                     <button
                       onClick={() => addToCartFunc(product)}
                       className="cartBtn border-2 w-8 h-8"
@@ -61,7 +68,7 @@ const Cart = () => {
                       <FaMinus className=" mx-auto" />
                     </button>
                   </div>
-                  <button className="mt-4">
+                  <button className="mt-2">
                     <Link
                       to="/"
                       className="cartBtn px-6 py-1.5 w-fit uppercase text-sm leading-loose font-bold border-2 tracking-widest border-[#16494a]"

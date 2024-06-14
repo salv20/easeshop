@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "./components/Landing.jsx";
-import ProductDetail from "./pages/landingpage/productDetail.jsx";
+import Landing from "./pages/Landing.jsx";
+import ProductDetail from "./pages/productDetail.jsx";
 import { Provider } from "react-redux";
 import store from "./redux/ProductReducer.js";
-import Cart from "./components/Cart.jsx";
+import Cart from "./pages/Cart.jsx";
 
 const router = createBrowserRouter([
   {

@@ -1,6 +1,6 @@
 import Sliders from "./Sliders";
 import { motion } from "framer-motion";
-import { fadeIn } from "../../../Variants";
+import { fadeIn } from "../../Variants";
 
 const Hero = () => {
   return (

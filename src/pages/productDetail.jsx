@@ -4,12 +4,12 @@ import axios from "axios";
 import { FaCaretLeft, FaStar } from "react-icons/fa";
 import { BeatLoader } from "react-spinners";
 import { useDispatch } from "react-redux";
-import { AddCart } from "../../redux/productAction";
+import { AddCart } from "../redux/productAction";
 
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { fadeIn } from "../../../Variants";
+import { fadeIn } from "../../Variants";
 import { motion } from "framer-motion";
 
 const ProductDetail = () => {
@@ -47,9 +47,8 @@ const ProductDetail = () => {
       theme: "dark",
       transition: Bounce,
     });
-
-    localStorage.setItem(JSON.stringify(product), "easeProduct");
   };
+
   return (
     <motion.section
       variants={fadeIn("up")}

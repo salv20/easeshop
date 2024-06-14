@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fadeIn } from "../../../Variants";
+import { fadeIn } from "../../Variants";
 import { BeatLoader } from "react-spinners";
 
 const Collections = () => {

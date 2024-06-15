@@ -9,14 +9,13 @@ const Cart = () => {
   let state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  // if (localStorage.easeArray && localStorage.easeArray?.length) {
-  //   let locProduct = JSON.parse(localStorage.getItem("easeArray"));
-  //   state = locProduct;
-  // }
+  if (localStorage.easeArray) {
+    const storedData = JSON.parse(localStorage.getItem("easeArray"));
+    state = storedData;
+  }
 
   const addToCartFunc = (product) => {
     dispatch(AddCart(product));
-    console.log(product);
   };
 
   const RemoveFromCartFunc = (product) => {
@@ -52,7 +51,7 @@ const Cart = () => {
 
                   <p className=" text-xl font-bold text-orange-400">
                     $ {Number(product.price)} x {product.qty} = $
-                    {Number(product.price) * product.qty}{" "}
+                    {(Number(product.price) * product.qty).toFixed(2)}{" "}
                   </p>
                   <div className="flex justify-around items-center mt-2">
                     <button

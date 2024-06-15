@@ -34,8 +34,8 @@ const ProductDetail = () => {
       });
   }, []);
 
-  const cartAddiction = (product) => {
-    dispatch(AddCart(product));
+  const cartAddiction = (p) => {
+    dispatch(AddCart(p));
     toast.success("Cart added successfully!", {
       position: "top-center",
       autoClose: 5000,
@@ -103,7 +103,9 @@ const ProductDetail = () => {
                     </Link>
                   </button>
                   <button
-                    onClick={() => cartAddiction(product)}
+                    onClick={() => {
+                      cartAddiction(product);
+                    }}
                     className=" btn-shop"
                   >
                     add to cart
